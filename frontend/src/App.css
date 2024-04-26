@@ -11,8 +11,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding: 0px;
   width: 100%;
-  background-image: url('https://res.cloudinary.com/dhv1rz2a0/image/upload/v1712203524/air_pollution/k3ngajnmi4vv3ubitf1m.jpg');
+  background-image: url('https://res.cloudinary.com/dhv1rz2a0/image/upload/v1710404199/air_pollution/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_1_ulb8ib.jpg');
   background-size:100%;
-  /* backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px); */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }

@@ -2,8 +2,10 @@ import {Component} from 'react'
 import {ref, onValue} from 'firebase/database'
 import {IoLocationSharp} from 'react-icons/io5'
 import {FaRegClock} from 'react-icons/fa'
-import fetchDustData from '../GetData/fetchDustData'
 import Firebase from '../Firebase'
+import fetchDustData from '../GetData/fetchDustData'
+import LineChart from '../LineChart'
+import {Chart as chartjs } from 'chart.js/auto'
 import './index.css'
 
 class AirPollution extends Component {
@@ -70,7 +72,8 @@ class AirPollution extends Component {
   }
 
   render() {
-    const {PM2_5, CO, NH3, O3, Humidity, Temperature, Time} = this.state
+    const {PM2_5, CO, NH3, O3, Humidity, Temperature, Time, PM2_5_Data} = this.state
+    console.log(PM2_5_Data)
     return (
       <>
         <div className="bg-container">
@@ -102,42 +105,63 @@ class AirPollution extends Component {
           <table className="table">
             <tr>
               <th>Pollutant</th>
+              <th>Min</th>
+              <th>Average</th>
+              <th>Max</th>
               <th>Instantaneous</th>
               <th>Unit</th>
             </tr>
 
             <tr>
               <td className="bold-text">Dust</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
               <td>{PM2_5}</td>
-              <td>(mg/m^3)</td>
+              <td>(ug/m<sup>3</sup>)</td>
             </tr>
 
             <tr>
               <td className="bold-text">CO</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
               <td>{CO}</td>
-              <td>(mg/m^3)</td>
+              <td>(mg/m<sup>3</sup>)</td>
             </tr>
 
             <tr>
               <td className="bold-text">NH3</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
               <td>{NH3}</td>
-              <td>(ug/m^3)</td>
+              <td>(ug/m<sup>3</sup>)</td>
             </tr>
 
             <tr>
               <td className="bold-text">O3</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
               <td>{O3}</td>
-              <td>(ppm)</td>
+              <td>(ug/m<sup>3</sup>)</td>
             </tr>
 
             <tr>
               <td className="bold-text">Humidity</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
               <td>{Humidity}</td>
               <td>(RH)</td>
             </tr>
 
             <tr>
               <td className="bold-text">Temperature</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
               <td>{Temperature}</td>
               <td>(°C)</td>
             </tr>

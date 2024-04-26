@@ -5,8 +5,6 @@ async function fetchDustData() {
         headers: {
           'Content-Type': 'application/json', // Request headers
         },
-        mode: 'cors', 
-        body: JSON.stringify({ /* Request body */ })
       });
       if (!response.ok) {
         throw new Error('Network response was not ok');
