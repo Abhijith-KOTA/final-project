@@ -1,0 +1,19 @@
+### Create Table HTTP Request
+GET http://localhost:3000/createtable
+
+### Insert Data HTTP Request
+POST http://localhost:3000/insertdata
+Content-Type: application/json
+
+{
+  "pm2_5":0,
+  "CO":0,
+  "NH3":0,
+  "Ozone":0,
+  "humidity":0,
+  "Temperature":0
+}
+
+### Get Data HTTP Request
+Get http://localhost:3000/getdata 
+Content-Type: application/json

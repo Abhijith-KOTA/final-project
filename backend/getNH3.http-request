@@ -1,0 +1,13 @@
+{
+  "body": {
+    "content": "",
+    "file": false,
+    "fileSize": false
+  },
+  "headers": {
+    "content-type": "application/json"
+  },
+  "method": "GET",
+  "title": "GET NH3 HTTP Request",
+  "url": "http://localhost:3000/getnh3"
+}

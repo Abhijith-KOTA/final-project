@@ -1,0 +1,13 @@
+{
+  "body": {
+    "content": "ewogICAgImN1cnJlbnRUaW1lSVNUIjogIjIwMjQtMDMtMDYgMTE6MDQ6MTciLAogICAgInBtMl81IjogMC43NSwKICAgICJDTyI6IDEuMywKICAgICJOSDMiOiAxNjIuMCwKICAgICJPem9uZSI6IDAuMSwKICAgICJodW1pZGl0eSI6IDUyLjIsCiAgICAiVGVtcGVyYXR1cmUiOiAzMC4yCiAgfQ==",
+    "file": false,
+    "fileSize": false
+  },
+  "headers": {
+    "content-type": "application/json"
+  },
+  "method": "POST",
+  "title": "Insert Data HTTP Request",
+  "url": "http://localhost:3000/insertdata"
+}

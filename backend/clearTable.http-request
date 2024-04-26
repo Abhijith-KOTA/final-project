@@ -1,0 +1,13 @@
+{
+  "body": {
+    "content": "",
+    "file": false,
+    "fileSize": false
+  },
+  "headers": {
+    "content-type": "application/json"
+  },
+  "method": "PUT",
+  "title": "Clear table HTTP Request",
+  "url": "http://localhost:3000/clear"
+}

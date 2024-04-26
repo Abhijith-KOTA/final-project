@@ -1,0 +1,83 @@
+.bg-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: 'Times New Roman';
+    margin: 15px;
+    color: black;
+  }
+  
+  .bold-text {
+    font-weight: bold;
+  }
+  
+  .city {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .location-icon {
+    color: Red;
+    font-size: 40px;
+    padding-top: 5px;
+  }
+  
+  .city-drop {
+    color: black;
+    padding: 7px;
+    border: none;
+    background-color: transparent;
+  }
+  .city-drop:hover {
+    border: 1px solid black;
+  }
+  
+  .city-drop option {
+    background-color: transparent;
+    /* Change background color to light blue */
+  }
+  
+  .table {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-size: 25px;
+  }
+  
+  .table td,
+  .table th {
+    padding: 15px;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    max-width: 50px;
+    text-align: center;
+    color: black;
+  }
+  
+  .table tr {
+    margin: 20px;
+  }
+  
+  .clock-icon {
+    color: black;
+    font-size: 25px;
+    margin-right: 5px;
+  }
+  
+  .time-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 21px;
+  }
+  
+  .bg-danger-color {
+    background-color: rgba(255, 0, 0, 0.3);
+  }
+  
