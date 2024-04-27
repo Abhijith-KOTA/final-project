@@ -1,6 +1,6 @@
 async function fetchStats() {
     try {
-      const response = await fetch('http://localhost:3001/dailystats',{
+      const response = await fetch('https://reimagined-space-bassoon-4xj6xwj64v6c7wpp-3001.app.github.dev/dailystats',{
         method: 'GET',
         headers: {
           'Content-Type': 'application/json', 

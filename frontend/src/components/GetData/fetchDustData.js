@@ -1,6 +1,6 @@
 async function fetchDustData() {
     try {
-      const response = await fetch('http://localhost:3001/getdata',{
+      const response = await fetch('https://reimagined-space-bassoon-4xj6xwj64v6c7wpp-3001.app.github.dev/getdata',{
         method: 'GET',
         headers: {
           'Content-Type': 'application/json', 
