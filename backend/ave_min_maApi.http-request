@@ -9,5 +9,5 @@
   },
   "method": "GET",
   "title": "New HTTP Request",
-  "url": "http://localhost:3000/dailystats"
+  "url": "http://localhost:3001/dailystats"
 }

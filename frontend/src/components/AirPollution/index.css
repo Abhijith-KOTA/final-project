@@ -38,11 +38,10 @@
   
   .city-drop option {
     background-color: transparent;
-    /* Change background color to light blue */
   }
   
   .table {
-    width: 100%;
+    width: 96vw;
     margin-top: 5px;
     margin-bottom: 20px;
     color: #ffffff;
@@ -80,4 +79,18 @@
   .bg-danger-color {
     background-color: rgba(255, 0, 0, 0.3);
   }
-  
+
+  .graph-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    color: #ffffff;
+  }
+
+  .graph{
+    width: 73vw;
+    background-color: white;
+    margin: 5px;
+  }

@@ -4,8 +4,11 @@ import {IoLocationSharp} from 'react-icons/io5'
 import {FaRegClock} from 'react-icons/fa'
 import Firebase from '../Firebase'
 import fetchDustData from '../GetData/fetchDustData'
-import LineChart from '../LineChart'
-import {Chart as chartjs } from 'chart.js/auto'
+import DustChart from '../graphs/DustGraph'
+import COChart from '../graphs/CoGraph'
+import OzoneChart from '../graphs/OzoneGraph'
+import Nh3Chart from '../graphs/Nh3Graph'
+import fetchStats from '../GetData/fetchStats'
 import './index.css'
 
 class AirPollution extends Component {
@@ -17,7 +20,8 @@ class AirPollution extends Component {
     Humidity: 0,
     Temperature: 0,
     Time: 0,
-    PM2_5_Data: [{0: 0}],
+    Data: [],
+    DailyStats:{},
   }
 
   async componentDidMount() {
@@ -64,7 +68,10 @@ class AirPollution extends Component {
     })
 
     const dustData = await fetchDustData()
-    this.setState({PM2_5_Data: dustData})
+    this.setState({Data: dustData})
+
+    const statsData = await fetchStats()
+    this.setState({DailyStats: statsData})
   }
 
   cityRestrict = e => {
@@ -72,8 +79,8 @@ class AirPollution extends Component {
   }
 
   render() {
-    const {PM2_5, CO, NH3, O3, Humidity, Temperature, Time, PM2_5_Data} = this.state
-    console.log(PM2_5_Data)
+    const {PM2_5, CO, NH3, O3, Humidity, Temperature, Time, Data, DailyStats} = this.state
+    console.log(DailyStats)
     return (
       <>
         <div className="bg-container">
@@ -102,6 +109,7 @@ class AirPollution extends Component {
             <FaRegClock className="clock-icon" />
             <span>{Time}</span>
           </div>
+          <div className="pollutant-container">
           <table className="table">
             <tr>
               <th>Pollutant</th>
@@ -114,59 +122,72 @@ class AirPollution extends Component {
 
             <tr>
               <td className="bold-text">Dust</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
+              <td>{DailyStats.min_pm2_5}</td>
+              <td>{DailyStats.avg_pm2_5}</td>
+              <td>{DailyStats.max_pm2_5}</td>
               <td>{PM2_5}</td>
               <td>(ug/m<sup>3</sup>)</td>
             </tr>
 
             <tr>
               <td className="bold-text">CO</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
+              <td>{DailyStats.min_CO}</td>
+              <td>{DailyStats.avg_CO}</td>
+              <td>{DailyStats.max_CO}</td>
               <td>{CO}</td>
               <td>(mg/m<sup>3</sup>)</td>
             </tr>
 
             <tr>
               <td className="bold-text">NH3</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
+              <td>{DailyStats.min_NH3}</td>
+              <td>{DailyStats.avg_NH2}</td>
+              <td>{DailyStats.max_NH3}</td>
               <td>{NH3}</td>
               <td>(ug/m<sup>3</sup>)</td>
             </tr>
 
             <tr>
               <td className="bold-text">O3</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
+              <td>{DailyStats.min_Ozone}</td>
+              <td>{DailyStats.avg_Ozone}</td>
+              <td>{DailyStats.max_Ozone}</td>
               <td>{O3}</td>
               <td>(ug/m<sup>3</sup>)</td>
             </tr>
 
             <tr>
               <td className="bold-text">Humidity</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
+              <td>{DailyStats.min_humidity}</td>
+              <td>{DailyStats.avg_humidity}</td>
+              <td>{DailyStats.max_humidity}</td>
               <td>{Humidity}</td>
               <td>(RH)</td>
             </tr>
 
             <tr>
               <td className="bold-text">Temperature</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
+              <td>{DailyStats.min_Temperature}</td>
+              <td>{DailyStats.avg_Temperature}</td>
+              <td>{DailyStats.max_Temperature}</td>
               <td>{Temperature}</td>
               <td>(°C)</td>
             </tr>
           </table>
+          </div>
         </div>
+        {Data.length > 0 && (
+            <div className="graph-container">
+              <h1>Dust </h1>
+              <DustChart graphdata={Data} />
+              <h1>CO</h1>
+              <COChart graphdata={Data} />
+              <h1>Ozone</h1>
+              <OzoneChart graphdata={Data} />
+              <h1>NH3</h1>
+              <Nh3Chart graphdata={Data} />
+            </div>
+          )}
       </>
     )
   }
