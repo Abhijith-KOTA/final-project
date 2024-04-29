@@ -83,6 +83,36 @@ app.get("/getdata", async (request, response) => {
 	response.send(data);
 })
 
+app.get("/tableinfo", async(request, response) =>{
+  const infoQuery = `PRAGMA table_info(air_quality);`
+  const info = await db.all(infoQuery);
+  response.status(200);
+  response.send(info);
+})
+
+app.get("/hoursdata", async (request, response) =>{
+  const query = `
+  SELECT 
+        strftime('%Y-%m-%d %H:00:00', time) AS hour,
+        strftime('%Y-%m-%d', time) AS date,
+        strftime('%Y-%m', time) AS month,
+        strftime('%Y', time) AS year,
+        AVG(pm2_5) AS pm2_5_hourly_average,
+        AVG(CO) AS CO_hourly_average,
+        AVG(NH3) AS NH3_hourly_average,
+        AVG(Ozone) AS Ozone_hourly_average,
+        AVG(humidity) AS humidity_hourly_average,
+        AVG(Temperature) AS Temperature_hourly_average
+      FROM 
+      air_quality
+      GROUP BY 
+        hour, date, month, year;`
+  
+  const hoursData = await db.all(query);
+  response.status(200);
+  response.send(hoursData);
+})
+
 app.get("/dailystats", async (request, response) => {
   const query = `
         SELECT
