@@ -13,13 +13,13 @@ import './index.css'
 
 class AirPollution extends Component {
   state = {
-    PM2_5: 0,
-    CO: 0,
-    NH3: 0,
-    O3: 0,
-    Humidity: 0,
-    Temperature: 0,
-    Time: 0,
+    PM2_5: null,
+    CO: null,
+    NH3: null,
+    O3: null,
+    Humidity: null,
+    Temperature: null,
+    Time: null,
     Data: [],
     DailyStats:{},
   }
@@ -80,6 +80,9 @@ class AirPollution extends Component {
 
   dustCat =()=>{
     const {PM2_5} = this.state
+    if (PM2_5 == null){
+      return null
+    }
     if (PM2_5 <= 30){
       return "Good"
     }else if (PM2_5<=60){
@@ -97,6 +100,9 @@ class AirPollution extends Component {
   
   coCat = ()=>{
     const {CO} = this.state
+    if (CO == null){
+      return null
+    }
     if (CO<=1){
       return "Good"
     }else if (CO<=2){
@@ -114,6 +120,9 @@ class AirPollution extends Component {
 
   NH3Cat = ()=>{
     const {NH3} = this.state
+    if (NH3 == null){
+      return null
+    }
     if (NH3<=200){
       return "Good"
     }else if (NH3<=400){
@@ -131,6 +140,9 @@ class AirPollution extends Component {
 
   O3Cat = ()=>{
     const {O3} = this.state
+    if (O3 == null){
+      return null
+    }
     if (O3<=50){
       return "Good"
     }else if (O3<=100){
