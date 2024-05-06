@@ -48,6 +48,7 @@ await db.run(createTableQuery)
 
 app.post("/insertdata", async (request, response) => {
   const { pm2_5, CO, NH3, Ozone, humidity, Temperature } = request.body;
+  console.log(pm2_5, CO, NH3, Ozone, humidity, Temperature)
   const currentTimeIST = moment.tz(moment(), 'Asia/Kolkata').format('YYYY-MM-DD HH:mm:ss');
   
   const insertQuery = `

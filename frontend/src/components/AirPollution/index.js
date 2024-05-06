@@ -78,6 +78,74 @@ class AirPollution extends Component {
     e.target.value = 'Coimbatore'
   }
 
+  dustCat =()=>{
+    const {PM2_5} = this.state
+    if (PM2_5 <= 30){
+      return "Good"
+    }else if (PM2_5<=60){
+      return "Satisfactory"
+    }else if (PM2_5<=90){
+      return "Moderately polluted"
+    }else if(PM2_5<=120){
+      return "Poor"
+    }else if (PM2_5<=250){
+      return "Very Poor"
+    }else {
+      return "Severe"
+    }
+  }
+  
+  coCat = ()=>{
+    const {CO} = this.state
+    if (CO<=1){
+      return "Good"
+    }else if (CO<=2){
+      return "Satisfactory"
+    }else if (CO<=10){
+      return "Moderately polluted"
+    }else if(CO<=17){
+      return "Poor"
+    }else if (CO<=34){
+      return "Very Poor"
+    }else {
+      return "Severe"
+    }
+  }
+
+  NH3Cat = ()=>{
+    const {NH3} = this.state
+    if (NH3<=200){
+      return "Good"
+    }else if (NH3<=400){
+      return "Satisfactory"
+    }else if (NH3<=800){
+      return "Moderately polluted"
+    }else if(NH3<=1200){
+      return "Poor"
+    }else if (NH3<=1800){
+      return "Very Poor"
+    }else {
+      return "Severe"
+    }
+  }
+
+  O3Cat = ()=>{
+    const {O3} = this.state
+    if (O3<=50){
+      return "Good"
+    }else if (O3<=100){
+      return "Satisfactory"
+    }else if (O3<=168){
+      return "Moderately polluted"
+    }else if(O3<=208){
+      return "Poor"
+    }else if (O3<=748){
+      return "Very Poor"
+    }else {
+      return "Severe"
+    }
+  }
+
   render() {
     const {PM2_5, CO, NH3, O3, Humidity, Temperature, Time, Data, DailyStats} = this.state
     console.log(DailyStats)
@@ -118,6 +186,7 @@ class AirPollution extends Component {
               <th>Max</th>
               <th>Instantaneous</th>
               <th>Unit</th>
+              <th>Category</th>
             </tr>
 
             <tr>
@@ -127,6 +196,7 @@ class AirPollution extends Component {
               <td>{DailyStats.max_pm2_5}</td>
               <td>{PM2_5}</td>
               <td>(ug/m<sup>3</sup>)</td>
+              <td>{this.dustCat()}</td>
             </tr>
 
             <tr>
@@ -136,6 +206,7 @@ class AirPollution extends Component {
               <td>{DailyStats.max_CO}</td>
               <td>{CO}</td>
               <td>(mg/m<sup>3</sup>)</td>
+              <td>{this.coCat()}</td>
             </tr>
 
             <tr>
@@ -145,6 +216,7 @@ class AirPollution extends Component {
               <td>{DailyStats.max_NH3}</td>
               <td>{NH3}</td>
               <td>(ug/m<sup>3</sup>)</td>
+              <td>{this.NH3Cat()}</td>
             </tr>
 
             <tr>
@@ -154,6 +226,7 @@ class AirPollution extends Component {
               <td>{DailyStats.max_Ozone}</td>
               <td>{O3}</td>
               <td>(ug/m<sup>3</sup>)</td>
+              <td>{this.O3Cat()}</td>
             </tr>
 
             <tr>
