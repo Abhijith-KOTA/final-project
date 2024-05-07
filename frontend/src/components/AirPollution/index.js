@@ -160,7 +160,6 @@ class AirPollution extends Component {
 
   render() {
     const {PM2_5, CO, NH3, O3, Humidity, Temperature, Time, Data, DailyStats} = this.state
-    console.log(DailyStats)
     return (
       <>
         <div className="bg-container">
