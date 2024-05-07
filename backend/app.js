@@ -47,14 +47,14 @@ await db.run(createTableQuery)
 
 
 app.post("/insertdata", async (request, response) => {
-  const {time, pm2_5, CO, NH3, Ozone, humidity, Temperature } = request.body;
-  
+  const { pm2_5, CO, NH3, Ozone, humidity, Temperature } = request.body;
+  const currentTimeIST = moment.tz(moment(), 'Asia/Kolkata').format('YYYY-MM-DD HH:mm:ss');
   const insertQuery = `
       INSERT INTO air_quality (time, pm2_5, CO, NH3, Ozone, humidity, Temperature) 
-      VALUES (datetime(?), ?, ?, ?, ?, ?, ?)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
   `;
 
-  await db.run(insertQuery, [time, pm2_5, CO, NH3, Ozone, humidity, Temperature])
+  await db.run(insertQuery, [currentTimeIST, pm2_5, CO, NH3, Ozone, humidity, Temperature])
       .then(() => {
           response.status(200).send("Data Inserted");
           console.log("done")
