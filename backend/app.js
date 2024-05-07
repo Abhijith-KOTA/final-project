@@ -83,6 +83,22 @@ app.get("/getdata", async (request, response) => {
 	response.send(data);
 })
 
+app.get("/checkColumnType", async (request, response) => {
+  const query = `
+      PRAGMA table_info(air_quality);
+  `;
+  try {
+      const result = await db.all(query);
+      // Iterate through the result to find the data type of each column
+      const columnTypes = result.map(column => ({ name: column.name, type: column.type }));
+      response.status(200).json(columnTypes);
+  } catch (error) {
+      console.error("Error executing query:", error);
+      response.status(500).json({ error: "Internal server error" });
+  }
+});
+
+
 app.get("/tableinfo", async(request, response) =>{
   const infoQuery = `PRAGMA table_info(air_quality);`
   const info = await db.all(infoQuery);
@@ -114,6 +130,10 @@ app.get("/hoursdata", async (request, response) =>{
 })
 
 app.get("/dailystats", async (request, response) => {
+  const lastRowQuery = `
+        SELECT MAX(time) AS last_time FROM air_quality;
+    `;
+    const { last_time } = await db.get(lastRowQuery);
   const query = `
         SELECT
             AVG(pm2_5) AS avg_pm2_5,
@@ -137,13 +157,31 @@ app.get("/dailystats", async (request, response) => {
         FROM
             air_quality
         WHERE
-            DATE(time) = DATE('now')
+            DATE(time) = DATE(?)
     `;
-    const dailystatsdata = await db.get(query);
-    response.status(200);
-    response.send(dailystatsdata);
+    try {
+      const dailystatsdata = await db.get(query, [last_time]);
+      response.status(200).json(dailystatsdata);
+  } catch (error) {
+      console.error("Error executing query:", error);
+      response.status(500).json({ error: "Internal server error" });
+  }
 
 })
+
+app.get("/checkCurrentDateRecords", async (request, response) => {
+  const query = `
+      SELECT COUNT(*) AS count FROM air_quality WHERE DATE(time) = DATE('now');
+  `;
+  try {
+      const result = await db.get(query);
+      response.status(200).json({ count: result.count });
+  } catch (error) {
+      console.error("Error executing query:", error);
+      response.status(500).json({ error: "Internal server error" });
+  }
+});
+
 // MIDDLEWARE ### TO AUTHENTICATE JWT TOKEN
 
 const authenticateToken = async (request, response, next) => {
