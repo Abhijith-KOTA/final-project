@@ -10,10 +10,10 @@ const data = {
 labels: labels,
 datasets: [
     {
-        label: "PM2.5",
+        label: "Dust",
         backgroundColor: "red",
         borderColor: "red",
-        data: graphdata.map((data) => data.pm2_5*1000),
+        data: graphdata.map((data) => data.pm2_5),
     }],
 };
 
