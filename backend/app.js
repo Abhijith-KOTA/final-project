@@ -3,11 +3,12 @@ const path = require("path");
 const { open } = require("sqlite");
 const sqlite3 = require("sqlite3");
 const moment = require('moment-timezone');
-const jwt = require("jsonwebtoken");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
 const dbpath = path.join(__dirname, "airPollution.db");
 let db = null;
 
@@ -181,30 +182,6 @@ app.get("/checkCurrentDateRecords", async (request, response) => {
       response.status(500).json({ error: "Internal server error" });
   }
 });
-
-// MIDDLEWARE ### TO AUTHENTICATE JWT TOKEN
-
-const authenticateToken = async (request, response, next) => {
-  let jwtToken;
-  const authHeader = request.headers["authorization"];
-  if (authHeader !== undefined) {
-    jwtToken = authHeader.split(" ")[1];
-  } else {
-    response.status(401);
-    response.send("Invalid JWT Token");
-  }
-  if (jwtToken !== undefined) {
-    jwt.verify(jwtToken, "udaynikhwify", async (error, payload) => {
-      if (error) {
-        response.status(401);
-        response.send("Invalid JWT Token");
-      } else {
-        request.username = payload.username;
-        next();
-      }
-    });
-  }
-};
 
 app.get('/getPM25', async (request, response) => {
   const query = `

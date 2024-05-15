@@ -223,7 +223,7 @@ class AirPollution extends Component {
             <tr>
               <td className="bold-text">NH3</td>
               <td>{DailyStats.min_NH3}</td>
-              <td>{DailyStats.avg_NH2}</td>
+              <td>{DailyStats.avg_NH3}</td>
               <td>{DailyStats.max_NH3}</td>
               <td>{NH3}</td>
               <td>(ug/m<sup>3</sup>)</td>
