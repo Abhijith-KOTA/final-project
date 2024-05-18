@@ -34,6 +34,7 @@
   }
   .city-drop:hover {
     border: 1px solid black;
+    background-color: rgba(0, 0, 0, 0.47);
   }
   
   .city-drop option {

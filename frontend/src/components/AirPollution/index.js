@@ -186,7 +186,7 @@ class AirPollution extends Component {
           </div>
           <div className="time-container">
             <FaRegClock className="clock-icon" />
-            <span>{Time}</span>
+            <span>Updated {Time} hours ago</span>
           </div>
           <div className="pollutant-container">
           <table className="table">

@@ -60,6 +60,7 @@ app.post("/insertdata", async (request, response) => {
       .then(() => {
           response.status(200).send("Data Inserted");
           console.log("done")
+          console.log(request.body, "\n\n\n")
       })
       .catch((error) => {
           console.log(error);

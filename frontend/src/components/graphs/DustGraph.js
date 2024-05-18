@@ -1,7 +1,7 @@
 import React from "react";
 // eslint-disable-next-line
 import Chart from "chart.js/auto";
-import { Line } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 
 const DustChart = ({graphdata}) => {
     const labels = graphdata.map((data) => data.hour);
@@ -19,7 +19,7 @@ datasets: [
 
 return (
 <div>
-<Line data={data} className="graph" />
+<Bar data={data} className="graph" />
 </div>
 );
 };
