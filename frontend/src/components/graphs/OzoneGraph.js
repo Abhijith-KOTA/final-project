@@ -4,7 +4,7 @@ import Chart from "chart.js/auto";
 import { Line } from 'react-chartjs-2';
 
 const OzoneChart = ({graphdata}) => {
-    const labels = graphdata.map((data) => data.time);
+    const labels = graphdata.map((data) => data.hour);
     
     const data = {
     labels: labels,
@@ -13,7 +13,7 @@ const OzoneChart = ({graphdata}) => {
             label: "Ozone",
             backgroundColor: "red",
             borderColor: "red",
-            data: graphdata.map((data) => data.Ozone),
+            data: graphdata.map((data) => data.Ozone_hourly_average),
         }],
     };
 

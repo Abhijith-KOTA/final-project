@@ -1,6 +1,6 @@
-async function fetchDustData() {
+async function fetchData() {
     try {
-      const response = await fetch('https://reimagined-space-bassoon-4xj6xwj64v6c7wpp-3001.app.github.dev/getdata',{
+      const response = await fetch('https://reimagined-space-bassoon-4xj6xwj64v6c7wpp-3001.app.github.dev/hoursdata',{
         method: 'GET',
         headers: {
           'Content-Type': 'application/json', 
@@ -17,5 +17,5 @@ async function fetchDustData() {
     }
   }
   
-  export default fetchDustData;
+  export default fetchData;
   

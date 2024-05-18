@@ -3,7 +3,7 @@ import {ref, onValue} from 'firebase/database'
 import {IoLocationSharp} from 'react-icons/io5'
 import {FaRegClock} from 'react-icons/fa'
 import Firebase from '../Firebase'
-import fetchDustData from '../GetData/fetchDustData'
+import fetchData from '../GetData/fetchDustData'
 import DustChart from '../graphs/DustGraph'
 import COChart from '../graphs/CoGraph'
 import OzoneChart from '../graphs/OzoneGraph'
@@ -67,7 +67,7 @@ class AirPollution extends Component {
       this.setState({Time: TimeValue})
     })
 
-    const dustData = await fetchDustData()
+    const dustData = await fetchData()
     this.setState({Data: dustData})
 
     const statsData = await fetchStats()

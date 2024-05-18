@@ -4,7 +4,7 @@ import Chart from "chart.js/auto";
 import { Line } from 'react-chartjs-2';
 
 const COChart = ({graphdata}) => {
-    const labels = graphdata.map((data) => data.time);
+    const labels = graphdata.map((data) => data.hour);
     
     const data = {
     labels: labels,
@@ -13,7 +13,7 @@ const COChart = ({graphdata}) => {
             label: "CO",
             backgroundColor: "red",
             borderColor: "red",
-            data: graphdata.map((data) => data.CO),
+            data: graphdata.map((data) => data.CO_hourly_average),
         }],
     };
 
