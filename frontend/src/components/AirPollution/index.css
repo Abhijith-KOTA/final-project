@@ -8,6 +8,22 @@
     margin: 15px;
     color: #ffffff;
   }
+
+  .nav-bar{
+    width: 95%;
+    display: flex;
+    align-items: center;
+  }
+
+  .predictButton{
+    height: 50px;
+    width: 120px;
+    background-color: #2188f5;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    margin-left: auto;
+  }
   
   .bold-text {
     font-weight: bold;
@@ -83,15 +99,19 @@
 
   .graph-container{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     margin-top: 20px;
     color: #ffffff;
+    flex-wrap: wrap;
+    width: 98%;
+    padding: 10px;
+    text-align: center;
   }
 
   .graph{
-    width: 73vw;
+    width: 43vw;
     background-color: white;
     margin: 5px;
   }

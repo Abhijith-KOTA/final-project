@@ -158,6 +158,10 @@ class AirPollution extends Component {
     }
   }
 
+  predictRedirect = () =>{
+      window.open('https://reimagined-space-bassoon-4xj6xwj64v6c7wpp-3002.app.github.dev/', '_blank');
+  }
+
   render() {
     const {PM2_5, CO, NH3, O3, Humidity, Temperature, Time, Data, DailyStats} = this.state
     return (
@@ -165,6 +169,7 @@ class AirPollution extends Component {
         <div className="bg-container">
           <div className="nav-bar">
             <h1>Air Quality</h1>
+            <button className="predictButton" type='button' onClick={this.predictRedirect}>Predict</button>
           </div>
           <div className="city">
             <label htmlFor="city">
@@ -262,14 +267,22 @@ class AirPollution extends Component {
         </div>
         {Data.length > 0 && (
             <div className="graph-container">
+              <div>
               <h1>Dust </h1>
               <DustChart graphdata={Data} />
-              <h1>CO</h1>
+              </div>
+              <div>
+                <h1>CO</h1>
               <COChart graphdata={Data} />
-              <h1>Ozone</h1>
+              </div>
+              <div>
+                <h1>Ozone</h1>
               <OzoneChart graphdata={Data} />
-              <h1>NH3</h1>
+              </div>
+              <div>
+                <h1>NH3</h1>
               <Nh3Chart graphdata={Data} />
+              </div>
             </div>
           )}
       </>
