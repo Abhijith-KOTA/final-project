@@ -100,7 +100,7 @@
   .graph-container{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-top: 20px;
     color: #ffffff;
@@ -111,7 +111,7 @@
   }
 
   .graph{
-    width: 43vw;
+    width: 70vw;
     background-color: white;
     margin: 5px;
   }
@@ -119,3 +119,64 @@
   .bg-good{
     background-color: #00c936;
   }
+
+.trends{
+  color: #ffffff;
+  text-align: center;
+}
+
+
+  /* index.css */
+
+.graph-selector {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.graph-selector label {
+  font-size: 28px;
+  margin-right: 20px;
+  cursor: pointer;
+  color: #fff; /* Set label text color to white */
+}
+
+.graph-selector input[type="radio"] {
+  display: none; /* Hide the actual radio button */
+}
+
+.graph-selector input[type="radio"] + label {
+  position: relative;
+  padding-left: 25px; /* Adjust based on your design */
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.graph-selector input[type="radio"] + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background-color: transparent; /* Transparent background */
+}
+
+
+.graph-selector input[type="radio"] + label:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.graph-selector input[type="radio"]:checked + label:after {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  top: 5px;
+  left: 5px;
+}

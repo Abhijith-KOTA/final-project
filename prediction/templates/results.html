@@ -2,27 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Prediction Results</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .container {
+            max-width: 900px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .table-responsive {
+            margin-top: 20px;
+        }
+        .btn-primary {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Prediction Results</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Parameter</th>
-                <th>Value</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for key, value in prediction.items() %}
-                <tr>
-                    <td>{{ key }}</td>
-                    <td>{{ value }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <br>
-    <a href="/">Back to Form</a>
+    <div class="container">
+        <h1>Predicted Air Quality</h1>
+        <div class="table-responsive">
+            {{ prediction_html | safe }}
+        </div>
+        <a href="{{ url_for('index') }}" class="btn btn-primary mt-3">Back</a>
+    </div>
 </body>
 </html>

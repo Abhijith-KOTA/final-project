@@ -22,6 +22,7 @@ class AirPollution extends Component {
     Time: null,
     Data: [],
     DailyStats:{},
+    selectedGraph: 'dust',
   }
 
   async componentDidMount() {
@@ -158,12 +159,57 @@ class AirPollution extends Component {
     }
   }
 
+  handleGraphChange = (e) => {
+    this.setState({ selectedGraph: e.target.value });
+    e.target.style.backgroundColor = 'blue';
+  };
+
+  renderGraph = () => {
+    const { selectedGraph, Data } = this.state;
+
+    switch (selectedGraph) {
+      case 'dust':
+        return <div className="graph-container">
+        <div>
+        <h1>Dust </h1>
+        <DustChart graphdata={Data} />
+        </div>
+      </div>
+      case 'co':
+        return <div className="graph-container">
+        <div>
+        <h1>CO</h1>
+        <COChart graphdata={Data} />;
+        </div>
+      </div>
+        
+      case 'ozone':
+        return <div className="graph-container">
+        <div>
+        <h1>Ozone</h1>
+        <OzoneChart graphdata={Data} />;
+        </div>
+      </div>
+      
+      case 'nh3':
+        return <div className="graph-container">
+        <div>
+        <h1>NH3</h1>
+        <Nh3Chart graphdata={Data} />;
+        </div>
+      </div>
+        
+      default:
+        return null;
+    }
+  };
+
   predictRedirect = () =>{
       window.open('https://reimagined-space-bassoon-4xj6xwj64v6c7wpp-3002.app.github.dev/', '_blank');
   }
 
   render() {
-    const {PM2_5, CO, NH3, O3, Humidity, Temperature, Time, Data, DailyStats} = this.state
+    const {PM2_5, CO, NH3, O3, Humidity, Temperature, Time, DailyStats, selectedGraph} = this.state
     return (
       <>
         <div className="bg-container">
@@ -265,26 +311,46 @@ class AirPollution extends Component {
           </table>
           </div>
         </div>
-        {Data.length > 0 && (
-            <div className="graph-container">
-              <div>
-              <h1>Dust </h1>
-              <DustChart graphdata={Data} />
-              </div>
-              <div>
-                <h1>CO</h1>
-              <COChart graphdata={Data} />
-              </div>
-              <div>
-                <h1>Ozone</h1>
-              <OzoneChart graphdata={Data} />
-              </div>
-              <div>
-                <h1>NH3</h1>
-              <Nh3Chart graphdata={Data} />
-              </div>
-            </div>
-          )}
+        <h1 className='trends' >Trends</h1>
+        <div className="graph-selector">
+          <label>
+            <input
+              type="radio"
+              value="dust"
+              checked={selectedGraph === 'dust'}
+              onChange={this.handleGraphChange}
+            />
+            Dust
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="co"
+              checked={selectedGraph === 'co'}
+              onChange={this.handleGraphChange}
+            />
+            CO
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="ozone"
+              checked={selectedGraph === 'ozone'}
+              onChange={this.handleGraphChange}
+            />
+            Ozone
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="nh3"
+              checked={selectedGraph === 'nh3'}
+              onChange={this.handleGraphChange}
+            />
+            NH3
+          </label>
+        </div>
+        {this.renderGraph()}
       </>
     )
   }
