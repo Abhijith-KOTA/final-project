@@ -4,6 +4,9 @@ import Chart from "chart.js/auto";
 import { Bar } from 'react-chartjs-2';
 
 const COChart = ({graphdata}) => {
+    if (graphdata === null){
+        return null
+    }
     const labels = graphdata.map((data) => data.hour);
     
     const data = {

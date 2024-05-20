@@ -21,7 +21,7 @@ class AirPollution extends Component {
     Temperature: null,
     Time: null,
     Data: [],
-    DailyStats:{},
+    DailyStats:{"min_pm2_5": null,},
     selectedGraph: 'dust',
   }
 
@@ -72,7 +72,9 @@ class AirPollution extends Component {
     this.setState({Data: dustData})
 
     const statsData = await fetchStats()
-    this.setState({DailyStats: statsData})
+    if (statsData !==null){
+      this.setState({DailyStats: statsData})
+    }
   }
 
   cityRestrict = e => {
