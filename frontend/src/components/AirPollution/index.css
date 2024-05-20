@@ -180,3 +180,10 @@
   top: 5px;
   left: 5px;
 }
+
+.selected{
+  /* text-decoration: underline; */
+  background-color: #2188f5;
+  border-radius: 8px;
+  padding: 4px;
+}

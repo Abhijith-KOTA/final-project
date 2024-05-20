@@ -179,7 +179,7 @@ class AirPollution extends Component {
         return <div className="graph-container">
         <div>
         <h1>CO</h1>
-        <COChart graphdata={Data} />;
+        <COChart graphdata={Data} />
         </div>
       </div>
         
@@ -187,7 +187,7 @@ class AirPollution extends Component {
         return <div className="graph-container">
         <div>
         <h1>Ozone</h1>
-        <OzoneChart graphdata={Data} />;
+        <OzoneChart graphdata={Data} />
         </div>
       </div>
       
@@ -195,7 +195,7 @@ class AirPollution extends Component {
         return <div className="graph-container">
         <div>
         <h1>NH3</h1>
-        <Nh3Chart graphdata={Data} />;
+        <Nh3Chart graphdata={Data} />
         </div>
       </div>
         
@@ -320,7 +320,7 @@ class AirPollution extends Component {
               checked={selectedGraph === 'dust'}
               onChange={this.handleGraphChange}
             />
-            Dust
+            <span className={selectedGraph === 'dust' ? 'selected' : ''}>Dust</span>
           </label>
           <label>
             <input
@@ -329,7 +329,7 @@ class AirPollution extends Component {
               checked={selectedGraph === 'co'}
               onChange={this.handleGraphChange}
             />
-            CO
+            <span className={selectedGraph === 'co' ? 'selected' : ''}>CO</span>
           </label>
           <label>
             <input
@@ -338,7 +338,7 @@ class AirPollution extends Component {
               checked={selectedGraph === 'ozone'}
               onChange={this.handleGraphChange}
             />
-            Ozone
+            <span className={selectedGraph === 'ozone' ? 'selected' : ''}>Ozone</span>
           </label>
           <label>
             <input
@@ -347,7 +347,7 @@ class AirPollution extends Component {
               checked={selectedGraph === 'nh3'}
               onChange={this.handleGraphChange}
             />
-            NH3
+            <span className={selectedGraph === 'nh3' ? 'selected' : ''}>NH3</span>
           </label>
         </div>
         {this.renderGraph()}
