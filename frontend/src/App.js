@@ -13,20 +13,16 @@ const App = () => {
             }
         };
 
-        // Initial fetch when component mounts
         fetchData();
 
-        // Set up interval to fetch data every 60 seconds
-        const intervalId = setInterval(fetchData, 10000); // 60 seconds in milliseconds
+        const intervalId = setInterval(fetchData, 60000);
 
-        // Cleanup function to clear the interval when the component unmounts or the effect re-runs
         return () => clearInterval(intervalId);
-    }, []); // Empty dependency array to run the effect only once when the component mounts
+    }, []);
 
     return (
         <>
             <AirPollution />
-            {/* You can render other components or JSX here */}
         </>
     );
 };
