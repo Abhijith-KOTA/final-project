@@ -1,6 +1,8 @@
 import Firebase from '../Firebase'
 import {ref, onValue} from 'firebase/database'
 
+let postedData = {};
+
 const sendDataToBackend = async (newData) => {
     try {
         const time = newData.time
@@ -59,7 +61,12 @@ const backendhandler = async () => {
             onValue(TemperatureBase, data => { newData.Temperature = data.val() }),
             onValue(TimeBase, data => { newData["time"] = data.val() })
         ]).then(() => {
-            sendDataToBackend(newData);
+            if (JSON.stringify(newData) !== JSON.stringify(postedData)) {
+                sendDataToBackend(newData);
+                postedData = { ...newData };
+            }else{
+                console.log("Data Not Changed")
+            }
         });
         return 
     } catch (error) {
