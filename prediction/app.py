@@ -53,7 +53,7 @@ X, y = create_sequences(scaled_features, target_columns=[0, 1, 2, 3], sequence_l
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
 
 # Load the model with custom objects
-model_combined = load_model('/workspaces/final-project/your_model.h5', custom_objects={'LeakyReLU': LeakyReLU})
+model_combined = load_model('/workspaces/final-project/prediction/your_model.h5', custom_objects={'LeakyReLU': LeakyReLU})
 
 loss = model_combined.evaluate(X_test, y_test)
 print(f'Test Loss: {loss}')
@@ -109,9 +109,11 @@ def predict():
     except ValueError:
         return redirect(url_for('index'))
 
-    # Call your ML model's prediction method here
     prediction = predict_future(start_date, end_date, scaled_features, model_combined, scaler)
+    prediction.rename(columns={'dust(mg_m^3)': 'dust(ug_m^3)'}, inplace=True)
+    prediction.rename(columns={'O3(ppm)': 'O3(ug_m^3)'}, inplace=True)
     prediction = prediction[['date'] + [col for col in prediction.columns if col != 'date']]
+    prediction.rename(columns={'date': 'TimeStamp'}, inplace=True)
     prediction_html = prediction.to_html(index=False, classes='table table-striped table-bordered table-hover')
     return render_template('results.html', prediction_html=prediction_html)
 

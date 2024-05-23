@@ -67,6 +67,8 @@ model_combined.compile(optimizer='adam', loss='mean_squared_error')
 
 history = model_combined.fit(X_train, y_train, epochs=100, batch_size=32, validation_data=(X_test, y_test))
 
+model_combined.save("your_model.h5")
+
 def predict_future(start_date, end_date, initial_data, model, scaler, sequence_length=60):
 
     future_dates = pd.date_range(start=start_date, end=end_date, freq='H')
