@@ -1,6 +1,6 @@
 async function fetchData() {
     try {
-      const response = await fetch('https://reimagined-space-bassoon-4xj6xwj64v6c7wpp-3001.app.github.dev/hoursdata',{
+      const response = await fetch('https://automatic-tribble-7gvwgpvw6gwfxwpw-3001.app.github.dev/hoursdata',{
         method: 'GET',
         headers: {
           'Content-Type': 'application/json', 

@@ -80,6 +80,9 @@ class AirPollution extends Component {
   cityRestrict = e => {
     e.target.value = 'Coimbatore'
   }
+  roundToTwoDecimals = (num) => {
+    return Math.round(num * 100) / 100;
+  };
 
   dustCat =()=>{
     const {PM2_5} = this.state
@@ -207,7 +210,7 @@ class AirPollution extends Component {
   };
 
   predictRedirect = () =>{
-      window.open('https://reimagined-space-bassoon-4xj6xwj64v6c7wpp-3002.app.github.dev/', '_blank');
+      window.open('https://automatic-tribble-7gvwgpvw6gwfxwpw-3002.app.github.dev/', '_blank');
   }
 
   render() {
@@ -255,9 +258,9 @@ class AirPollution extends Component {
 
             <tr>
               <td className="bold-text">Dust</td>
-              <td>{DailyStats.min_pm2_5}</td>
-              <td>{DailyStats.avg_pm2_5}</td>
-              <td>{DailyStats.max_pm2_5}</td>
+              <td>{this.roundToTwoDecimals(DailyStats.min_pm2_5)}</td>
+              <td>{this.roundToTwoDecimals(DailyStats.avg_pm2_5)}</td>
+              <td>{this.roundToTwoDecimals(DailyStats.max_pm2_5)}</td>
               <td>{PM2_5}</td>
               <td>(ug/m<sup>3</sup>)</td>
               <td>{this.dustCat()}</td>
@@ -265,9 +268,9 @@ class AirPollution extends Component {
 
             <tr>
               <td className="bold-text">CO</td>
-              <td>{DailyStats.min_CO}</td>
-              <td>{DailyStats.avg_CO}</td>
-              <td>{DailyStats.max_CO}</td>
+              <td>{this.roundToTwoDecimals(DailyStats.min_CO)}</td>
+              <td>{this.roundToTwoDecimals(DailyStats.avg_CO)}</td>
+              <td>{this.roundToTwoDecimals(DailyStats.max_CO)}</td>
               <td>{CO}</td>
               <td>(mg/m<sup>3</sup>)</td>
               <td>{this.coCat()}</td>
@@ -275,9 +278,9 @@ class AirPollution extends Component {
 
             <tr>
               <td className="bold-text">NH3</td>
-              <td>{DailyStats.min_NH3}</td>
-              <td>{DailyStats.avg_NH3}</td>
-              <td>{DailyStats.max_NH3}</td>
+              <td>{this.roundToTwoDecimals(DailyStats.min_NH3)}</td>
+              <td>{this.roundToTwoDecimals(DailyStats.avg_NH3)}</td>
+              <td>{this.roundToTwoDecimals(DailyStats.max_NH3)}</td>
               <td>{NH3}</td>
               <td>(ug/m<sup>3</sup>)</td>
               <td>{this.NH3Cat()}</td>
@@ -285,9 +288,9 @@ class AirPollution extends Component {
 
             <tr>
               <td className="bold-text">O3</td>
-              <td>{DailyStats.min_Ozone}</td>
-              <td>{DailyStats.avg_Ozone}</td>
-              <td>{DailyStats.max_Ozone}</td>
+              <td>{this.roundToTwoDecimals(DailyStats.min_Ozone)}</td>
+              <td>{this.roundToTwoDecimals(DailyStats.avg_Ozone)}</td>
+              <td>{this.roundToTwoDecimals(DailyStats.max_Ozone)}</td>
               <td>{O3}</td>
               <td>(ug/m<sup>3</sup>)</td>
               <td>{this.O3Cat()}</td>
@@ -295,18 +298,18 @@ class AirPollution extends Component {
 
             <tr>
               <td className="bold-text">Humidity</td>
-              <td>{DailyStats.min_humidity}</td>
-              <td>{DailyStats.avg_humidity}</td>
-              <td>{DailyStats.max_humidity}</td>
+              <td>{this.roundToTwoDecimals(DailyStats.min_humidity)}</td>
+              <td>{this.roundToTwoDecimals(DailyStats.avg_humidity)}</td>
+              <td>{this.roundToTwoDecimals(DailyStats.max_humidity)}</td>
               <td>{Humidity}</td>
               <td>(RH)</td>
             </tr>
 
             <tr>
               <td className="bold-text">Temperature</td>
-              <td>{DailyStats.min_Temperature}</td>
-              <td>{DailyStats.avg_Temperature}</td>
-              <td>{DailyStats.max_Temperature}</td>
+              <td>{this.roundToTwoDecimals(DailyStats.min_Temperature)}</td>
+              <td>{this.roundToTwoDecimals(DailyStats.avg_Temperature)}</td>
+              <td>{this.roundToTwoDecimals(DailyStats.max_Temperature)}</td>
               <td>{Temperature}</td>
               <td>(°C)</td>
             </tr>

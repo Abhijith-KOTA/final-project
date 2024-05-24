@@ -98,16 +98,16 @@ def predict_future(start_date, end_date, initial_data, model, scaler, sequence_l
     return future_df
 
 
-start_date = input("Enter the start date and time (YYYY-MM-DD HH:MM:SS): ")
-end_date = input("Enter the end date and time (YYYY-MM-DD HH:MM:SS): ")
+# start_date = input("Enter the start date and time (YYYY-MM-DD HH:MM:SS): ")
+# end_date = input("Enter the end date and time (YYYY-MM-DD HH:MM:SS): ")
 
 
-try:
-    pd.to_datetime(start_date)
-    pd.to_datetime(end_date)
-except ValueError:
-    print("Invalid date format. Please enter the date in YYYY-MM-DD HH:MM:SS format.")
+# try:
+#     pd.to_datetime(start_date)
+#     pd.to_datetime(end_date)
+# except ValueError:
+#     print("Invalid date format. Please enter the date in YYYY-MM-DD HH:MM:SS format.")
 
-future_predictions = predict_future(start_date, end_date, scaled_features, model_combined, scaler)
+# future_predictions = predict_future(start_date, end_date, scaled_features, model_combined, scaler)
 
-print(future_predictions.to_string(index=False))
+# print(future_predictions.to_string(index=False))

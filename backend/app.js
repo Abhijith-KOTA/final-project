@@ -49,8 +49,8 @@ await db.run(createTableQuery)
 
 
 app.post("/insertdata", async (request, response) => {
-  const { pm2_5, CO, NH3, Ozone, humidity, Temperature } = request.body;
-  const currentTimeIST = moment.tz(moment(), 'Asia/Kolkata').format('YYYY-MM-DD HH:mm:ss');
+  const { currentTimeIST, pm2_5, CO, NH3, Ozone, humidity, Temperature } = request.body;
+  // const currentTimeIST = moment.tz(moment(), 'Asia/Kolkata').format('YYYY-MM-DD HH:mm:ss');
   const insertQuery = `
       INSERT INTO air_quality (time, pm2_5, CO, NH3, Ozone, humidity, Temperature) 
       VALUES (?, ?, ?, ?, ?, ?, ?)

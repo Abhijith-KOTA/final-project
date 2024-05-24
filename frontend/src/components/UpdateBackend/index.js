@@ -12,7 +12,7 @@ const sendDataToBackend = async (newData) => {
         if (time !==undefined || pm2_5!==undefined){
 
         // Send data to backend API
-        const response = await fetch('https://reimagined-space-bassoon-4xj6xwj64v6c7wpp-3001.app.github.dev/insertdata', {
+        const response = await fetch('https://automatic-tribble-7gvwgpvw6gwfxwpw-3001.app.github.dev/insertdata', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

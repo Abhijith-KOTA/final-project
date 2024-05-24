@@ -84,6 +84,7 @@ def predict_future(start_date, end_date, initial_data, model, scaler, sequence_l
 
     future_df = pd.DataFrame(future_predictions, columns=target_features)
     future_df['date'] = future_dates
+    future_df['NH3(ug_m^3)'] = future_df['NH3(ug_m^3)'].apply(lambda x: x / 10 if x >= 10 else x)
     return future_df
 
 
